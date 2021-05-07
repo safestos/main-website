@@ -86,7 +86,7 @@ img.emoji {
         display: block !important;
         border-top: none;
         box-shadow: none;
-        position: relative;
+        /*position: relative;*/
     }
 
     #dd-menu-mobile .et_mobile_nav_menu,
@@ -467,26 +467,26 @@ our Proceeds from our “Save the Ocean NFT Drop”.</p></div>
 <div class="et_pb_row et_pb_row_1">
 <div class="et_pb_column et_pb_column_4_4 et_pb_column_2  et_pb_css_mix_blend_mode_passthrough et-last-child">
 <div class="et_pb_module et_pb_countdown_timer et_pb_countdown_timer_0 et_pb_bg_layout_dark" data-end-timestamp="1625123100">
-<div class="et_pb_countdown_timer_container clearfix">
+<div class="et_pb_countdown_timer_container clearfix" id="timer">
 <h4 class="title">NFT DROP</h4>
 <div class="days section values" data-short="Day" data-full="Day(s)">
-<p class="value">054</p>
-<p class="label">Day(s)</p>
+<p class="value" id="days">000</p>
+<p class="label" style="font-size: 10px!important;">Day(s)</p>
 </div><div class="sep section">
 <p>:</p>
 </div><div class="hours section values" data-short="Hrs" data-full="Hour(s)">
-<p class="value">21</p>
-<p class="label">Hour(s)</p>
+<p class="value" id="hours">00</p>
+<p class="label" style="font-size: 10px!important;">Hour(s)</p>
 </div><div class="sep section">
 <p>:</p>
 </div><div class="minutes section values" data-short="Min" data-full="Minute(s)">
-<p class="value">21</p>
-<p class="label">Minute(s)</p>
+<p class="value" id="minutes">00</p>
+<p class="label" style="font-size: 10px!important;">Minute(s)</p>
 </div><div class="sep section">
 <p>:</p>
 </div><div class="seconds section values" data-short="Sec" data-full="Second(s)">
-<p class="value">58</p>
-<p class="label">Second(s)</p>
+<p class="value" id="seconds">00</p>
+<p class="label" style="font-size: 10px!important;">Second(s)</p>
 </div>
 </div>
 </div>
@@ -510,5 +510,44 @@ our Proceeds from our “Save the Ocean NFT Drop”.</p></div>
 <script type="text/javascript" src="assets/coblocks-animation.js" id="coblocks-animation-js"></script>
 <script type="text/javascript" src="assets/common.js" id="et-core-common-js"></script>
 <script type="text/javascript" src="assets/wp-embed.js" id="wp-embed-js"></script>
+
+<script>
+// Set the date we're counting down to
+var countDownDate = new Date("June 31, 2021 13:45:00 GMT").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  hours = hours.toString().length == 1 ? '0' + hours : hours;
+  minutes = minutes.toString().length == 1 ? '0' + minutes: minutes;
+  seconds = seconds.toString().length == 1 ? '0' + seconds : seconds;
+
+  // Display the result in the element with id="timer"
+  // document.getElementById("timer").innerHTML = days + "d " + hours + "h "
+  // + minutes + "m " + seconds + "s ";
+  document.getElementById("days").innerHTML = days
+  document.getElementById("hours").innerHTML = hours
+  document.getElementById("minutes").innerHTML = minutes
+  document.getElementById("seconds").innerHTML = seconds
+
+  // If the count down is finished, write some text
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("timer").innerHTML = "EXPIRED";
+  }
+}, 1000);
+</script>
 
 </body></html>

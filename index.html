@@ -84,7 +84,7 @@ img.emoji {
         display: block !important;
         border-top: none;
         box-shadow: none;
-        position: relative;
+        /*position: relative;*/
     }
 
     #dd-menu-mobile .et_mobile_nav_menu,
@@ -509,24 +509,24 @@ blockchained world.</div>
 </div> <div class="et_pb_module et_pb_text et_pb_text_8  et_pb_text_align_center et_pb_bg_layout_dark">
 <div class="et_pb_text_inner">Come Party with the best minds in Binance Smart Chain.</div>
 </div> <div class="et_pb_module et_pb_countdown_timer et_pb_countdown_timer_0 et_pb_bg_layout_dark" data-end-timestamp="1635638340">
-<div class="et_pb_countdown_timer_container clearfix">
+<div class="et_pb_countdown_timer_container clearfix" id="timer">
 <div class="days section values" data-short="Day" data-full="Day(s)">
-<p class="value">176</p>
+<p class="value" id="days">000</p>
 <p class="label">Day(s)</p>
 </div><div class="sep section">
 <p>:</p>
 </div><div class="hours section values" data-short="Hrs" data-full="Hour(s)">
-<p class="value">14</p>
+<p class="value"  id="hours">00</p>
 <p class="label">Hour(s)</p>
 </div><div class="sep section">
 <p>:</p>
 </div><div class="minutes section values" data-short="Min" data-full="Minute(s)">
-<p class="value">18</p>
+<p class="value" id="minutes">00</p>
 <p class="label">Minute(s)</p>
 </div><div class="sep section">
 <p>:</p>
 </div><div class="seconds section values" data-short="Sec" data-full="Second(s)">
-<p class="value">55</p>
+<p class="value" id="seconds">00</p>
 <p class="label">Second(s)</p>
 </div>
 </div>
@@ -589,5 +589,45 @@ the destination.&nbsp;</p></div>
 <script type="text/javascript" src="assets/jquery.js" id="et-jquery-visible-viewport-js"></script>
 <script type="text/javascript" src="assets/common.js" id="et-core-common-js"></script>
 <script type="text/javascript" src="assets/wp-embed.js" id="wp-embed-js"></script>
+
+<script>
+// Set the date we're counting down to
+var countDownDate = new Date("Oct 30 2021 24:00:00 GMT").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  hours = hours.toString().length == 1 ? '0' + hours : hours;
+  minutes = minutes.toString().length == 1 ? '0' + minutes: minutes;
+  seconds = seconds.toString().length == 1 ? '0' + seconds : seconds;
+
+  // Display the result in the element with id="timer"
+  // document.getElementById("timer").innerHTML = days + "d " + hours + "h "
+  // + minutes + "m " + seconds + "s ";
+  document.getElementById("days").innerHTML = days
+  document.getElementById("hours").innerHTML = hours
+  document.getElementById("minutes").innerHTML = minutes
+  document.getElementById("seconds").innerHTML = seconds
+
+  // If the count down is finished, write some text
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("timer").innerHTML = "EXPIRED";
+  }
+}, 1000);
+</script>
+
 
 </body></html>
